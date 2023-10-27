@@ -4,6 +4,7 @@ usersList = document.querySelector(".users-list");
 Seen = document.querySelector(".details");
 
 searchIcon.onclick = ()=>{
+  
   searchBar.classList.toggle("show");
   searchIcon.classList.toggle("active");
   searchBar.focus();
@@ -51,43 +52,18 @@ setInterval(() =>{
 }, 500);
 
 
-$(document).ready(function() {
-  
-  
-  
-  
-const detailLinks = document.querySelectorAll(".mesg");
 
-detailLinks.forEach(link => {
-    link.addEventListener("click", function(event) {
-      alert("ff");
-        event.preventDefault(); // Prevent the default behavior of following the link
 
-        // Get the user_id from the data attribute
-        const user_id = link.getAttribute("data-user-id");
-console.log(user_id);
-        // Send an AJAX request to the "php/mark-as-seen.php" script
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", "mark-as-seen.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+// function markAsRead(message_id) {
+//   // Make an AJAX request to the server to mark the message as read
+//   // You'll need to implement this part on the server-side to update the message status in your database.
 
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    // Database update was successful
-                    // You can update the UI or display a message to the user
-                    console.log(xhr.responseText);
-                } else {
-                    // Handle errors
-                    console.error("Database update failed");
-                }
-            }
-        };
+//   // For demonstration purposes, let's assume the request is successful:
+//   var xhr = new XMLHttpRequest();
+//   xhr.open("GET", "mark_message_as_read.php?msg_id=" + message_id, true);
+//   xhr.send();
 
-        // Send the user_id in the request data
-        const data = `user_id=${user_id}`;
-        xhr.send(data);
-    });
-});
-
-});
+//   // Now, you can visually indicate that the message has been read (e.g., change its style).
+//   var messageLink = event.currentTarget; // Get the clicked <a> element
+//   messageLink.style.fontWeight = "normal"; // Change the font style to indicate "read"
+// }

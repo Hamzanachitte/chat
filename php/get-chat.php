@@ -19,7 +19,7 @@
                                 </div>';
                 }else{
                     $output .= '<div class="chat incoming">
-                                <img src="php/images/'.$row['img'].'" alt="">
+                    <img src="php/images/'.($row['sex'] === "man" ? 'man.jpg' : 'woman.jpg') . '">
                                 <div class="details">
                                     <p>'. $row['msg'] .'</p>
                                 </div>

@@ -11,13 +11,7 @@ while ($row = mysqli_fetch_assoc($query)) {
         $msg = (strlen($result) > 28) ? substr($result, 0, 28) . '...' : $result;
         $you = (isset($row2['outgoing_msg_id']) && $outgoing_id == $row2['outgoing_msg_id']) ? "You: " : "";
 
-        // Check if the message is unread, and update its status to "seen"
-       // Check if the message is unread, and update its status to "seen"
-if ($outgoing_id == $row['unique_id'] && $row2['status'] === 'unread') {
-    $message_id = $row2['msg_id'];
-    $update_status_sql = "UPDATE messages SET status = 'seen' WHERE msg_id = $message_id";
-    mysqli_query($conn, $update_status_sql);
-}
+    
 
         
     } else {
@@ -44,11 +38,11 @@ if ($outgoing_id == $row['unique_id'] && $row2['status'] === 'unread') {
     // Display a notification badge if there are unread messages
     $notification = ($unread_messages > 0) ? '<span class="notification text-danger">(' . $unread_messages . ')</span>' : '';
 
-    $output .= '<a  onclick="myFunction()"  href="chat.php?user_id=' . $row['unique_id'] . '">
+    $output .= '<a   href="chat.php?user_id=' . $row['unique_id'] . '">
         <div class="content">
-            <img src="php/images/' . ($row['sex'] === "man" ? 'man.jpg' : 'woman.jpg') . '">
+            <img src="php/images/'.($row['sex'] === "man" ? 'man.jpg' : 'woman.jpg') . '">
             <div class="details">
-                <span>' . $row['fname'] . ' ' . $row['lname'] . '</span>
+                <span>' . $row['fname'] . ' </span>
                 <p >' . $you . $msg . '' . $notification . '</p> 
             </div>
            
@@ -57,12 +51,4 @@ if ($outgoing_id == $row['unique_id'] && $row2['status'] === 'unread') {
     </a>';
 }
 ?>
-  <script src="javascript/users.js"></script>
-<script>
-function myFunction() {
-    console.log("Hello World");
-}
 
-
-    
-</script>

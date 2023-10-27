@@ -51,7 +51,6 @@ if ($_SESSION['usertype'] === 'guest') {
             }
           ?>
               <?php 
-            
             if($row['sex'] ==="man") {
             echo '<img src="php/images/man.jpg" alt="man">';
             }else {
@@ -77,6 +76,7 @@ if ($_SESSION['usertype'] === 'guest') {
       </div>
     </section>
   </div>
+
 
   <script src="javascript/users.js"></script>
 

@@ -8,9 +8,9 @@ if (isset($_SESSION['user_id'])) {
 
     $usertype = 'guest';
     $status = 'Offline now';
-    $sql = "DELETE FROM users WHERE usertype = '$usertype' ";
+    $sql = "DELETE FROM users WHERE usertype = '$usertype' AND status = 'Offline now' ";
     // Check the last activity time (adjust the threshold as needed, e.g., 5 minutes)
-    $inactivity_threshold = 1000; // 5 minutes in seconds
+    $inactivity_threshold = 500; // 5 minutes in seconds
     if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $inactivity_threshold)) {
        
         if (mysqli_query($conn, $sql)) {

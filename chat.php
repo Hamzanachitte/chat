@@ -19,7 +19,7 @@ $user_id =$_SESSION['unique_id'];
           $sql = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$user_id}");
           if(mysqli_num_rows($sql) > 0){
             $row = mysqli_fetch_assoc($sql);
-            $update_status_sql = "UPDATE messages SET status = 'seen' WHERE outgoing_msg_id = {$user_id}  AND status = 'unread'";
+          
           }else{
             header("location: login.php");
           }
@@ -27,15 +27,12 @@ $user_id =$_SESSION['unique_id'];
         <a href="users.php" class="back-icon"><i class="fas fa-arrow-left"></i></a>
                <?php 
             
-            if($_SESSION['sex'] ==="man") {
-            echo '<img src="php/images/man.jpg" alt="man">';
-            }else {
-
-              echo '<img src="php/images/woman.jpg" alt="woman">';
-            }
+           
+              echo '<img src="php/images/'.($row['sex'] === "man" ? 'man.jpg' : 'woman.jpg') . '">';
+          
           ?>
         <div class="details">
-          <span><?php echo $row['fname']. " " . $row['lname'] ?></span>
+          <span><?php echo $row['fname']. " " ?></span>
           <p><?php echo $row['status']; ?></p>
         </div>
       </header>
@@ -49,7 +46,23 @@ $user_id =$_SESSION['unique_id'];
       </form>
     </section>
   </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
+  <script>
+      $(document).ready(function() {
+          // Make an AJAX request to update_status.php when the page loads
+          $.ajax({
+              url: 'php/mark-as-seen.php',
+              type: 'GET',
+              success: function(response) {
+                  console.log(response);
+              },
+              error: function(xhr, status, error) {
+                  console.error(error);
+              }
+          });
+      });
+  </script>
   <script src="javascript/chat.js"></script>
 
 </body>

@@ -6,6 +6,19 @@
     <link rel="stylesheet" href="css/registrationstyle.css">
     <title>Registration</title>
 </head>
+<style>
+        /* Add this CSS to center the content */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+    </style>
 <body>
     <div class="container">
         <div class="wrapper">

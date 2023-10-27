@@ -1,7 +1,10 @@
 <?php
-session_start();
-if (isset($_SESSION['unique_id'])) {
+
+if ((isset($_SESSION['unique_id'])) && isset($_SESSION['guest_name'])){
   header("location: users.php");
+}else{
+  // header("location: login.php");
+  // exit;
 }
 ?>
 <!DOCTYPE html>
@@ -41,9 +44,13 @@ if (isset($_SESSION['unique_id'])) {
             <input class="login-button" type="submit" name="submit" value="Continue to Chat">
           </div>
           <div class="field button">
+                    <a class="login-button text-center"  href="guest_login.php">Log in as Guest</a>
+                </div>
+          <div class="field button">
             <a href="reset_password.php">Reset Password</a>
           </div>
         </form>
+   
         <div class="link">Not yet signed up? <a href="index.php">Signup now</a></div>
     </section>
   </div>

@@ -1,12 +1,4 @@
 <?php
-session_start();
-include_once "config.php";
-
-if (!isset($_SESSION['unique_id'])) {
-    header("location: login.php"); // Redirect to the login page if the user is not logged in.
-}
-
-$unique_id = $_SESSION['unique_id'];
 
 // Fetch the user's data from the database
 $user_query = mysqli_query($conn, "SELECT * FROM users WHERE unique_id = {$unique_id}");
